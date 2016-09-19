@@ -9,7 +9,7 @@ module.exports = {
 
         client.connect();
 
-        var query = client.query("select name,phone,email__c from salesforce.account");
+        var query = client.query("select id,name,phone,email__c from salesforce.account");
 
         query.on("row", function (row, result) { 
             result.addRow(row); 
