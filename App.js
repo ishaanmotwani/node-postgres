@@ -34,7 +34,7 @@ app.get('/db/dropTable', function(req,res){
     dbOperations.dropTable(req,res);
 }); 
 
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/client')); 
  
