@@ -9,7 +9,7 @@ module.exports = {
 
         client.connect();
 
-        var query = client.query("select * from employee");
+        var query = client.query("select name,phone,email__c from salesforce.account");
 
         query.on("row", function (row, result) { 
             result.addRow(row); 
@@ -31,8 +31,8 @@ module.exports = {
         var client = new pg.Client(conString);
 
         client.connect();
-        var query = client.query("insert into employee (firstName,lastName,email,mobile) "+ 
-                                "values ('"+req.query.fName+"','"+req.query.lName+"','"+
+        var query = client.query("insert into salesforce.account (name,email__c,phone) "+ 
+                                "values ('"+req.query.fName+"','"+
                                     req.query.email+"','"+req.query.mbl+"')");
     
         query.on("end", function (result) {          
@@ -51,7 +51,7 @@ module.exports = {
 
         client.connect();
          
-        var query = client.query( "Delete from employee Where id ="+req.query.id);
+        var query = client.query( "Delete from salesforce.account Where id ="+req.query.id);
     
         query.on("end", function (result) {          
             client.end(); 

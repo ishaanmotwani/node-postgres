@@ -29,11 +29,6 @@
                     </div>
                     
                     <div class="col-md-2">
-                        <input id="lName" name="lName"  placeholder="Last Name" ng-model="lName"
-                               type="text" class="form-control input-small"> 
-                    </div>
-                    
-                    <div class="col-md-2">
                         <input id="Email" name="Email"  placeholder="Email" ng-model="email"
                                type="text" class="form-control input-small"> 
                     </div>
@@ -56,7 +51,6 @@
                         <tr>
                             <th>  Id  </th>
                             <th> First Name </th>
-                            <th> Last Name </th>
                             <th>  Email </th>
                             <th>  Mobile </th>
                             <th>   </th>
@@ -65,10 +59,9 @@
                     <tbody>
                         <tr ng-repeat="item in dataset">
                             <td> {{item.id}} </td>
-                            <td> {{item.firstname}} </td>
-                            <td> {{item.lastname}} </td>
-                            <td> {{item.email}} </td>
-                            <td> {{item.mobile}} </td>
+                            <td> {{item.name}} </td>
+                            <td> {{item.email__c}} </td>
+                            <td> {{item.phone}} </td>
                             <td> <span title="delete this record" class="glyphicon glyphicon-trash text-danger" style="cursor:pointer" ng-click="delRecord(item.id)"></span> </td>
                         </tr>
                     </tbody>
@@ -102,7 +95,7 @@
                 
                 $scope.addRecord = function(){ 
                     $http({method: 'GET', url: '/db/addRecord?fName='+$scope.fName+'&lName='+
-                           $scope.lName+'&email='+$scope.email+'&mbl='+$scope.mbl}).
+                           '&email='+$scope.email+'&mbl='+$scope.mbl}).
                         success(function(data, status) { 
                                 alert('Record Added');
                                 $scope.getAllRec();
